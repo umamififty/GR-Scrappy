@@ -13,7 +13,7 @@ import pandas as pd
 from collections import Counter
 
 class GovUKPolicyScraper:
-    def __init__(self, base_dir="policy_data", log_level=logging.INFO):
+    def __init__(self, base_dir="/Volumes/Research/policy_data", log_level=logging.INFO):
         """
         Initialize the scraper with improved logging and failsafe mechanisms
         """
@@ -30,6 +30,7 @@ class GovUKPolicyScraper:
         })
         
         # Create base directory and logs directory
+        base_dir = "/Volumes/Research"
         os.makedirs(self.base_dir, exist_ok=True)
         logs_dir = os.path.join(self.base_dir, 'logs')
         os.makedirs(logs_dir, exist_ok=True)
@@ -1757,7 +1758,7 @@ def main():
     import sys
     
     # Create base directories
-    base_dir = "policy_data"
+    base_dir = "/Volumes/Research/policy_data"
     os.makedirs(base_dir, exist_ok=True)
     logs_dir = os.path.join(base_dir, 'logs')
     os.makedirs(logs_dir, exist_ok=True)
@@ -1833,7 +1834,7 @@ def main():
                 # No existing data, perform search
                 policies = scraper.search_policies(
                     search_term=None,  # Set a search term or None for all policies
-                    page_limit=10,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!!
+                    page_limit=1000,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!! MARKER
                     exclude_types=["consultation", "open consultation", "closed consultation"]
                 )
                 results["policies_found"] = len(policies)

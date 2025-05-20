@@ -189,7 +189,7 @@ def generate_tree(root_dir, output_file=None, show_size=True, max_depth=None, im
 # ===============================================================
 
 # The directory you want to visualize
-DIRECTORY_TO_VISUALIZE = "policy_data"
+DIRECTORY_TO_VISUALIZE = "/Volumes/Research/policy_data"
 
 # Text output file (set to None if you don't want text output)
 TEXT_OUTPUT_FILE = "directory_tree.txt"

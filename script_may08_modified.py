@@ -16,13 +16,16 @@ class GovUKPolicyScraper:
     def __init__(self, base_dir="policy_data", log_level=logging.INFO):
         """
         Initialize the scraper with improved logging and failsafe mechanisms
+        
+        Args:
+            base_dir (str): Base directory to store all downloaded data
+            log_level: Logging level (default: INFO)
         """
-        # Clean existing base directory for fresh runs
+                # Clean existing base directory for fresh runs
         if os.path.exists(base_dir):
             import shutil
             shutil.rmtree(base_dir)
-
-        self.base_url = "https://www.gov.uk"
+self.base_url = "https://www.gov.uk"
         self.base_dir = base_dir
         self.session = requests.Session()
         self.session.headers.update({
@@ -71,7 +74,7 @@ class GovUKPolicyScraper:
         
         return logger
     
-    def search_policies(self, search_term=None, page_limit=99999, exclude_types=None, resume_from_page=1):
+    def search_policies(self, search_term=None, page_limit=5, exclude_types=None, resume_from_page=1):
         """
         Search for policy papers on gov.uk with failsafe mechanisms
         
@@ -1833,7 +1836,7 @@ def main():
                 # No existing data, perform search
                 policies = scraper.search_policies(
                     search_term=None,  # Set a search term or None for all policies
-                    page_limit=10,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!!
+                    page_limit=1,      # Number of pages to scrape
                     exclude_types=["consultation", "open consultation", "closed consultation"]
                 )
                 results["policies_found"] = len(policies)
