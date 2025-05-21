@@ -1825,7 +1825,7 @@ def main():
                     # Continue with search anyway
                     policies = scraper.search_policies(
                         search_term=None,  # Set a search term or None for all policies
-                        page_limit=1,      # Number of pages to scrape
+                        page_limit=99999,      # Number of pages to scrape
                         
                         exclude_types=["consultation", "open consultation", "closed consultation"]
                     )
@@ -1834,7 +1834,7 @@ def main():
                 # No existing data, perform search
                 policies = scraper.search_policies(
                     search_term=None,  # Set a search term or None for all policies
-                    page_limit=1000,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!! MARKER
+                    page_limit=99999,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!! MARKER
                     exclude_types=["consultation", "open consultation", "closed consultation"]
                 )
                 results["policies_found"] = len(policies)
