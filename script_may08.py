@@ -71,7 +71,7 @@ class GovUKPolicyScraper:
         
         return logger
     
-    def search_policies(self, search_term=None, page_limit=99999, exclude_types=None, resume_from_page=1):
+    def search_policies(self, search_term=None, page_limit=50, exclude_types=None, resume_from_page=1):
         """
         Search for policy papers on gov.uk with failsafe mechanisms
         
@@ -1824,7 +1824,7 @@ def main():
                     # Continue with search anyway
                     policies = scraper.search_policies(
                         search_term=None,  # Set a search term or None for all policies
-                        page_limit=1,      # Number of pages to scrape
+                        page_limit=50,      # Number of pages to scrape
                         
                         exclude_types=["consultation", "open consultation", "closed consultation"]
                     )
@@ -1833,7 +1833,7 @@ def main():
                 # No existing data, perform search
                 policies = scraper.search_policies(
                     search_term=None,  # Set a search term or None for all policies
-                    page_limit=10,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!!
+                    page_limit=30,     # Number of pages to scrape THIS IS THE ONE CHANGE THIS VALUE!!! HERE
                     exclude_types=["consultation", "open consultation", "closed consultation"]
                 )
                 results["policies_found"] = len(policies)
