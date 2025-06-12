@@ -70,6 +70,11 @@ def convert_pdf_to_json(pdf_path, json_path):
     if not text or len(text.strip()) < 100:
         text = extract_text_with_ocr(pdf_path)
 
+    # If the final text is too short, consider it boilerplate and skip.
+    if len(text.strip()) < 200:
+        print(f"✗ Skipping: {pdf_path} (likely boilerplate or empty)")
+        return
+
     data = {
         "metadata": metadata,
         "content": text
